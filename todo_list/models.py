@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from kzflavor.models import KZIINField, KZIDCardField
 
 
 class Task(models.Model):
@@ -96,3 +98,11 @@ class FeedbackMessage(models.Model):
     name = models.CharField(max_length=100, verbose_name="Имя")
     email = models.EmailField()
     message = models.TextField(verbose_name="описание")
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=15)
+    address = models.TextField()
+    iin = KZIINField(verbose_name="ИИН")
+    id_card = KZIDCardField(verbose_name="Номер удостоверения")

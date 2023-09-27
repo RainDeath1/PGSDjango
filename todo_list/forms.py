@@ -2,7 +2,7 @@ from captcha.fields import CaptchaField
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import modelformset_factory
-from .models import Task, IceCream, Product, Playlist, Song
+from .models import Task, IceCream, Product, Playlist, Song, Profile
 
 
 
@@ -75,3 +75,9 @@ class FeedbackForm(forms.Form):
     name = forms.CharField(label="Ваше имя", max_length=100)
     email = forms.EmailField(label="Ваш e-mail")
     message = forms.CharField(label="Сообщение", widget=forms.Textarea)
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['phone_number', 'address', 'iin', 'id_card']

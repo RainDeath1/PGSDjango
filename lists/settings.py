@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'todo_list',
     'captcha',
+    'localflavor',
+    'kzflavor',
 ]
 CAPTCHA_CHALLENGE_FUNC = 'captcha.helpers.random_char_challenge'
 CAPTCHA_LENGTH = 5

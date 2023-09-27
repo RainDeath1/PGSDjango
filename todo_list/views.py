@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, DeleteView, ListView, DetailView, ArchiveIndexView
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
-from .models import Task, IceCream, Playlist, Song, Product, FeedbackMessage
-from .forms import TaskForm, IceCreamForm, ProductForm, TaskFormSet, PlaylistForm, SongForm, FeedbackForm
+from .models import Task, IceCream, Playlist, Song, Product, FeedbackMessage, Profile
+from .forms import TaskForm, IceCreamForm, ProductForm, TaskFormSet, PlaylistForm, SongForm, FeedbackForm, ProfileForm
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -12,6 +12,7 @@ import logging
 from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
 from django.db import transaction
+from django.contrib.auth.decorators import login_required
 
 
 logger = logging.getLogger(__name__)
@@ -255,3 +256,21 @@ def feedback_view(request):
         form = FeedbackForm()
 
     return render(request, 'playlist/feedback.html', {'form': form})
+
+
+#home_33
+@login_required
+def edit_profile(request):
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile.objects.create(user=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('tasks:playlist_list')
+    else:
+        form = ProfileForm(instance=profile)
+
+    return render(request, 'playlist/profile_edit.html', {'form': form})

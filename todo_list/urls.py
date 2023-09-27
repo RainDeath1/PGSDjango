@@ -36,5 +36,7 @@ urlpatterns = [
     path('create_product/', views.create_product_and_playlist_view, name='create_product_and_playlist'),
     #home_32
     path('feedback/', feedback_view, name='feedback'),
+    #home_33
+    path('profile/edit/', views.edit_profile, name='profile-edit'),
 ]
 
