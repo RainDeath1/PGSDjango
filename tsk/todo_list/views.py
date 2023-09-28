@@ -279,6 +279,7 @@ def edit_profile(request):
     return render(request, 'playlist/profile_edit.html', {'form': form})
 
 
+#34
 def create_post(request):
     if request.method == 'POST':
         form = SendingForm(request.POST)
@@ -294,3 +295,12 @@ class SendingDetailView(DetailView):
     model = Sending
     template_name = 'products/view_post_bb.html'
     context_object_name = 'post'
+
+
+#35
+def show_accordion(request):
+    return render(request, 'django_bootstrap_example/accordion.html')
+
+
+def show_alert(request):
+    return render(request, 'django_bootstrap_example/alert.html')

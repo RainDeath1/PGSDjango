@@ -38,8 +38,11 @@ urlpatterns = [
     path('feedback/', feedback_view, name='feedback'),
     #home_33
     path('profile/edit/', views.edit_profile, name='profile-edit'),
-    #34
+    #home_34
     path('create/post', create_post, name='create_post'),
     path('send/<int:pk>', SendingDetailView.as_view(), name='view_send'),
+    #home_35
+    path('accordion/', views.show_accordion, name='accordion'),
+    path('alert/', views.show_alert, name='alert'),
 ]
 

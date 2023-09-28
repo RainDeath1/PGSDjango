@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'localflavor',
     'kzflavor',
     'precise_bbcode',
+    'bootstrap4',
 ]
 CAPTCHA_CHALLENGE_FUNC = 'captcha.helpers.random_char_challenge'
 CAPTCHA_LENGTH = 5
