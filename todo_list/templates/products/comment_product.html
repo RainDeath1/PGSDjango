@@ -1,0 +1,31 @@
+{% extends 'tasks/base.html' %}
+
+{% load  half_str bbcode_tags %}
+
+
+{% block title %}Создать запись{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Создать запись</h2>
+        {% split_string "Hello,World" "," as split_result %}
+        <ul>
+        {% for item in split_result %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.content.id_for_label }}">Содержание:</label>
+                {{ form.content }}
+                {% if form.content.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.content.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+    </div>
+{% endblock %}
