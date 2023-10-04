@@ -7,6 +7,13 @@
 
 {% block content %}
     <div class="container">
+        {% greeting 10 %}
+        <br>
+        {% repeat_string "Hello" 3 %}
+        <br>
+        {{ 5|multiplier:3 }}
+        <br>
+        {{ "Hello World"|reverse_string }}
         <h2>Создать запись</h2>
         {% split_string "Hello,World" "," as split_result %}
         <ul>
