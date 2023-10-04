@@ -55,7 +55,7 @@ class TaskCreateView(CreateView):
     success_url = reverse_lazy('tasks:task-list')
 
     def post(self, request):
-        form = TaskForm(request.POST)
+        form = TaskForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('tasks:task-list')
@@ -155,7 +155,7 @@ def product_create_view(request):
     error_message = None
 
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             success_message = 'Продукт успешно добавлен в каталог'
@@ -234,6 +234,11 @@ def create_product_and_playlist(name, song_title, artist):
 
         product = Product(name=f"Товар для {name}", description=f"Официальный товар для плейлиста {name}", price=29.99)
         product.save()
+
+
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'products/product_list.html', {'products': products})
 
 
 def create_product_and_playlist_view(request):

@@ -28,6 +28,8 @@
     {% endfor %}
   </ul>
 {% endif %}
-
+{% if task.file %}
+    <p><strong>Файл:</strong> <a href="{{ task.file.url }}" download>Скачать</a></p>
+{% endif %}
     <a href="{% url 'tasks:task-list' %}" class="btn btn-secondary">Вернуться к списку задач</a>
 {% endblock %}

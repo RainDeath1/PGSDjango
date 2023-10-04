@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Task, Change, Song, Playlist, Sending
+from .models import Task, Change, Song, Playlist, Sending, Product
 
 admin.site.register(Task)
 admin.site.register(Change)
+admin.site.register(Product)
 
 
 @admin.register(Song)

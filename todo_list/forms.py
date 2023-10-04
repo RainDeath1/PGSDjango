@@ -24,7 +24,7 @@ class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        fields = ['title', 'description', 'due_date']
+        fields = ['title', 'description', 'due_date', 'file']
 
     def clean_title(self):
         title = self.cleaned_data.get('title')
@@ -52,7 +52,7 @@ class IceCreamForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price']
+        fields = ['name', 'description', 'price', 'image']
 
 
 #29
